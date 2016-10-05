@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.jvmed.joderdroid.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/layUno"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:layout_marginRight="14dp"
+            android:layout_marginEnd="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/minCar"
+            android:id="@+id/txtMenor" />
+
+        <EditText
+            android:textAlignment="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="3"
+            android:id="@+id/tbxMenor" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layDos"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:layout_marginRight="14dp"
+            android:layout_marginEnd="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/maxCar"
+            android:id="@+id/txtMayor" />
+
+        <EditText
+            android:textAlignment="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="3"
+            android:id="@+id/tbxMayor" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layTres"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal">
+
+        <Button
+            android:layout_gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:text=""
+            android:background="@drawable/icon"
+            android:id="@+id/btnGenerar" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layCuatro"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal">
+
+        <EditText
+            android:inputType="textCapSentences|textMultiLine"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tbxJoder" />
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:drawable/ic_menu_set_as"
+            android:text=""
+            android:id="@+id/btnPortapapeles" />
+    </LinearLayout>
+</LinearLayout>
