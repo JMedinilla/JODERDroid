@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">JODERDroid</string>
+    <string name="minimumValue">5</string>
+    <string name="minJODERChar">Un JODER© debe ser al menos de 5 caracteres</string>
+    <string name="minCha">Caracteres mínimos</string>
+    <string name="maximumValue">9999</string>
+    <string name="maxJODERChar">Un JODER© puede tener hasta 9999 caracteres</string>
+    <string name="maxCha">Caracteres máximos</string>
+    <string name="hint">JODER©</string>
+    <string name="btnGenerate">Generar JODER©</string>
+    <string name="JODEREmpty">No hay ningún JODER© a copiar</string>
+    <string name="JODERDefault">JODER</string>
+    <string name="JODERCopied">Se ha copiado el JODER© al portapapeles</string>
+    <string name="minHigherMax">Los caracteres mínimos son más altos que los máximos</string>
+    <string name="actionSubtitle">alexpowerup/JODERGenerator para Android</string>
+</resources>

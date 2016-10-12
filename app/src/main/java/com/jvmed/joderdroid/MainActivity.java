@@ -2,156 +2,114 @@ package com.jvmed.joderdroid;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
-import android.os.Build;
+import android.graphics.Color;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.DisplayMetrics;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.Toast;
-import java.util.Objects;
+import android.widget.RelativeLayout;
 
 public class MainActivity extends AppCompatActivity {
 
-    int valorMinimo;
-    int valorMaximo;
+    private static final int MINIMUM_POSIBLE_VALUE = 5;
+    private static final int MAXIMUM_POSIBLE_VALUE = 9999;
 
-    LinearLayout layUno;
-    LinearLayout layDos;
-    LinearLayout layTres;
-    LinearLayout layCuatro;
-    Button btnGenerar;
-    Button btnPortapapeles;
-    EditText tbxJoder;
-    EditText tbxMenor;
-    EditText tbxMayor;
+    private EditText edtJODER;
+    private EditText edtMin;
+    private EditText edtMax;
+    private Button btnGenerate;
+    private RelativeLayout parentLayout;
+    private int minimumValue;
+    private int maximumValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        valorMinimo = 0;
-        valorMaximo = 0;
-
-        inicializarControles();
-
-        establecerProporciones();
-
-        suscripcionesTBX();
-
-        suscripcionesBTN();
+        initialize();
     }
 
-    private void inicializarControles() {
-        layUno = (LinearLayout)findViewById(R.id.layUno);
-        layDos = (LinearLayout)findViewById(R.id.layDos);
-        layTres = (LinearLayout)findViewById(R.id.layTres);
-        layCuatro = (LinearLayout)findViewById(R.id.layCuatro);
-        btnGenerar = (Button)findViewById(R.id.btnGenerar);
-        btnPortapapeles = (Button)findViewById(R.id.btnPortapapeles);
-        tbxJoder = (EditText)findViewById(R.id.tbxJoder);
-        tbxMenor = (EditText)findViewById(R.id.tbxMenor);
-        tbxMayor = (EditText)findViewById(R.id.tbxMayor);
+    public void getButtonClick (View view) {
+        btnGenerate.setEnabled(false);
 
-        tbxJoder.setLines(2);
-        tbxJoder.setMaxLines(8);
-        tbxMenor.setText("5");
-        tbxMayor.setText("140");
+        switch (view.getId()) {
+            case R.id.btnGenerate:
+                if (edtMin.getText().toString().length() == 0) {
+                    edtMin.setText(getString(R.string.minimumValue));
+                }
+                else if (edtMax.getText().toString().length() == 0) {
+                    edtMax.setText(edtMin.getText().toString());
+                }
+
+                minimumValue = Integer.parseInt(edtMin.getText().toString());
+                maximumValue = Integer.parseInt(edtMax.getText().toString());
+
+                if (minimumValue < MINIMUM_POSIBLE_VALUE) {
+                    Snackbar snackbar = Snackbar.make(parentLayout, R.string.minJODERChar, Snackbar.LENGTH_INDEFINITE);
+                    snackbar.setActionTextColor(Color.RED);
+                    snackbar.setDuration(2500);
+                    snackbar.show();
+                }
+                else if (maximumValue > MAXIMUM_POSIBLE_VALUE) {
+                    Snackbar snackbar = Snackbar.make(parentLayout, R.string.maxJODERChar, Snackbar.LENGTH_INDEFINITE);
+                    snackbar.setActionTextColor(Color.RED);
+                    snackbar.setDuration(2500);
+                    snackbar.show();
+                }
+                else if (minimumValue > maximumValue) {
+                    Snackbar snackbar = Snackbar.make(parentLayout, R.string.minHigherMax, Snackbar.LENGTH_INDEFINITE);
+                    snackbar.setActionTextColor(Color.RED);
+                    snackbar.setDuration(2500);
+                    snackbar.show();
+                }
+                else {
+                    edtJODER.setText(JODER.Generate(minimumValue, maximumValue));
+                }
+                break;
+
+            case R.id.btnClipboard:
+                if (TextUtils.equals(edtJODER.getText().toString(), "")) {
+                    Snackbar snackbar = Snackbar.make(parentLayout, R.string.JODEREmpty, Snackbar.LENGTH_INDEFINITE);
+                    snackbar.setActionTextColor(Color.RED);
+                    snackbar.setDuration(2500);
+                    snackbar.show();
+                }
+                else {
+                    ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                    ClipData clip = ClipData.newPlainText("jdr", edtJODER.getText().toString());
+                    clipboard.setPrimaryClip(clip);
+
+                    Snackbar snackbar = Snackbar.make(parentLayout, R.string.JODERCopied, Snackbar.LENGTH_INDEFINITE);
+                    snackbar.setActionTextColor(Color.RED);
+                    snackbar.setDuration(2500);
+                    snackbar.show();
+                }
+                break;
+        }
+
+        btnGenerate.setEnabled(true);
     }
 
-    private void establecerProporciones() {
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-        tbxJoder.setWidth((dm.widthPixels * 74) / 100);
-        tbxJoder.setHeight((dm.widthPixels * 60) / 100);
-        layUno.setPadding(0, (dm.heightPixels * 4) / 100, 0, 0);
-        layDos.setPadding(0, (dm.heightPixels * 4) / 100, 0, 0);
-        layTres.setPadding(0, (dm.heightPixels * 6) / 100, 0, 0);
-        layCuatro.setPadding(0, (dm.heightPixels * 2) / 100, 0, 0);
-    }
+    private void initialize() {
+        minimumValue = 0;
+        maximumValue = 0;
+        parentLayout = (RelativeLayout)findViewById(R.id.parentLayout);
+        edtJODER = (EditText)findViewById(R.id.edtJODER);
+        edtMin = (EditText)findViewById(R.id.edtMin);
+        edtMax = (EditText)findViewById(R.id.edtMax);
+        btnGenerate = (Button)findViewById(R.id.btnGenerate);
+        edtMin.setText(getString(R.string.minimumValue));
+        edtMax.setText(getString(R.string.maximumValue));
+        edtJODER.setText(getString(R.string.JODERDefault));
 
-    private void suscripcionesTBX() {
-        tbxMenor.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                //
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() == 0) {
-                    tbxMenor.setText("5");
-                } else if (Integer.parseInt(String.valueOf(s)) < 5) {
-                    tbxMenor.setText("5");
-                } else if (Integer.parseInt(String.valueOf(s)) > 200) {
-                    tbxMenor.setText("200");
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                //
-            }
-        });
-        tbxMayor.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                //
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() == 0) {
-                    tbxMayor.setText("5");
-                } else if (Integer.parseInt(String.valueOf(s)) < 5) {
-                    tbxMayor.setText("5");
-                } else if (Integer.parseInt(String.valueOf(s)) > 200) {
-                    tbxMayor.setText("200");
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                //
-            }
-        });
-    }
-
-    private void suscripcionesBTN() {
-        btnGenerar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                valorMinimo = Integer.parseInt(tbxMenor.getText().toString());
-                valorMaximo = Integer.parseInt(tbxMayor.getText().toString());
-
-                if (valorMinimo > valorMaximo) {
-                    Toast.makeText(getApplicationContext(), "El número de caracteres mínimos es mayor que el segundo valor", Toast.LENGTH_LONG).show();
-                } else {
-                    tbxJoder.setText(JODER.Generate(valorMinimo, valorMaximo));
-                }
-            }
-        });
-        btnPortapapeles.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    if (Objects.equals(tbxJoder.getText().toString(), "")) {
-                        Toast.makeText(getApplicationContext(), "No se ha generado ningún JODER©", Toast.LENGTH_SHORT).show();
-                    } else {
-                        ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-                        ClipData clip = ClipData.newPlainText("jdr", tbxJoder.getText().toString());
-                        clipboard.setPrimaryClip(clip);
-
-                        Toast.makeText(getApplicationContext(), "Se ha copiado el JODER© al portapapeles", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-        });
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setSubtitle(getResources().getString(R.string.actionSubtitle));
+        }
     }
 }
