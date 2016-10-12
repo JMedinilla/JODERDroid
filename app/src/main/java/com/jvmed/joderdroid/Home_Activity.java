@@ -2,18 +2,21 @@ package com.jvmed.joderdroid;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
-import android.graphics.Color;
+import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 
-public class MainActivity extends AppCompatActivity {
+public class Home_Activity extends AppCompatActivity {
 
     private static final int MINIMUM_POSIBLE_VALUE = 5;
     private static final int MAXIMUM_POSIBLE_VALUE = 9999;
@@ -29,9 +32,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
 
         initialize();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.info, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_info) {
+            startActivity(new Intent(Home_Activity.this, Info_Activity.class));
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void sendSnack(String message) {

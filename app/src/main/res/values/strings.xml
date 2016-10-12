@@ -12,5 +12,16 @@
     <string name="minimumValue">5</string>
     <string name="maximumValue">9999</string>
     <string name="JODERDefault">JODER</string>
-    <string name="actionSubtitle">alexpowerup/JODERGenerator for Android</string>
+    <string name="actionSubtitle">JODERGenerator\'s Android version</string>
+    <string name="imagecontentdescription">imageContentDescription</string>
+    <string name="infoMessage">This project is an Android port of the AlexPowerUp\'s JODERGenerator application for WIndows</string>
+    <string name="jmedinilla">JMedinilla</string>
+    <string name="jmedinillaDesc">JODERDroid creator</string>
+    <string name="jmedinillaTwitter">KastJMD</string>
+    <string name="jmedinillaGit">JMedinilla/JODERDroid</string>
+    <string name="alexpowerup">AlexPowerUp</string>
+    <string name="alexpowerupDesc">JODERGenerator creator</string>
+    <string name="alexpowerupTwitter">AlexPowerUp</string>
+    <string name="alexpowerupGit">alexpowerup/JODERGenerator</string>
+    <string name="info">See information</string>
 </resources>

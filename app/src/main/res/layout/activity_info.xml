@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/background"
+    tools:context="com.jvmed.joderdroid.Info_Activity">
+
+    <TextView
+        android:layout_marginBottom="@dimen/main_margin"
+        android:textSize="17sp"
+        android:textAlignment="center"
+        android:textColor="@color/text"
+        android:text="@string/infoMessage"
+        android:id="@+id/mainMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <!-- -->
+
+    <ImageView
+        android:layout_marginBottom="@dimen/main_margin"
+        android:src="@drawable/jmd_icon"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/mainMessage"
+        android:id="@+id/jmedLogo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:contentDescription="@string/imagecontentdescription" />
+
+    <TextView
+        android:textSize="20sp"
+        android:textColor="@color/text"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/jmedLogo"
+        android:id="@+id/jmedName"
+        android:text="@string/jmedinilla"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:textSize="12sp"
+        android:layout_marginBottom="@dimen/info_margin"
+        android:textColor="#585858"
+        android:layout_centerHorizontal="true"
+        android:text="@string/jmedinillaDesc"
+        android:layout_below="@id/jmedName"
+        android:id="@+id/jmedDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/jmedDesc"
+        android:id="@+id/jmedGitLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginRight="14dp"
+            android:layout_marginEnd="14dp"
+            android:src="@drawable/git_icon"
+            android:id="@+id/jmedGitLogo"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:contentDescription="@string/imagecontentdescription" />
+
+        <TextView
+            android:textSize="15sp"
+            android:textColor="@color/text"
+            android:text="@string/jmedinillaGit"
+            android:id="@+id/jmedGitName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/main_margin"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:id="@+id/jmedTwLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/jmedGitLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:layout_marginRight="14dp"
+            android:layout_marginEnd="14dp"
+            android:src="@drawable/tw_icon"
+            android:id="@+id/jmedTwLogo"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:contentDescription="@string/imagecontentdescription" />
+
+        <TextView
+            android:textSize="15sp"
+            android:textColor="@color/text"
+            android:text="@string/jmedinillaTwitter"
+            android:id="@+id/jmedTwName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <!-- -->
+
+    <ImageView
+        android:layout_marginBottom="@dimen/main_margin"
+        android:src="@drawable/alex_icon"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/jmedTwLayout"
+        android:id="@+id/alexLogo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:contentDescription="@string/imagecontentdescription" />
+
+    <TextView
+        android:textSize="20sp"
+        android:textColor="@color/text"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/alexLogo"
+        android:id="@+id/alexName"
+        android:text="@string/alexpowerup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginBottom="@dimen/info_margin"
+        android:textSize="12sp"
+        android:textColor="#585858"
+        android:text="@string/alexpowerupDesc"
+        android:id="@+id/alexDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/alexName"
+        android:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/alexDesc"
+        android:id="@+id/alexGitLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginRight="14dp"
+            android:layout_marginEnd="14dp"
+            android:src="@drawable/git_icon"
+            android:id="@+id/alexGitLogo"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:contentDescription="@string/imagecontentdescription" />
+
+        <TextView
+            android:textSize="15sp"
+            android:textColor="@color/text"
+            android:text="@string/alexpowerupGit"
+            android:id="@+id/alexGitName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/alexGitLayout"
+        android:id="@+id/alexTwLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginRight="14dp"
+            android:layout_marginEnd="14dp"
+            android:src="@drawable/tw_icon"
+            android:id="@+id/alexTwLogo"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:contentDescription="@string/imagecontentdescription" />
+
+        <TextView
+            android:textSize="15sp"
+            android:textColor="@color/text"
+            android:text="@string/alexpowerupTwitter"
+            android:id="@+id/alexTwName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</RelativeLayout>

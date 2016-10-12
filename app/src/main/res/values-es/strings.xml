@@ -13,5 +13,16 @@
     <string name="JODERDefault">JODER</string>
     <string name="JODERCopied">Se ha copiado el JODER© al portapapeles</string>
     <string name="minHigherMax">Los caracteres mínimos son más altos que los máximos</string>
-    <string name="actionSubtitle">alexpowerup/JODERGenerator para Android</string>
+    <string name="actionSubtitle">Versión de JODERGenerator para Android</string>
+    <string name="jmedinillaGit">JMedinilla/JODERDroid</string>
+    <string name="alexpowerupGit">alexpowerup/JODERGenerator</string>
+    <string name="alexpowerupTwitter">AlexPowerUp</string>
+    <string name="jmedinillaTwitter">KastJMD</string>
+    <string name="alexpowerup">AlexPowerUp</string>
+    <string name="imagecontentdescription">imageContentDescription</string>
+    <string name="jmedinilla">JMedinilla</string>
+    <string name="jmedinillaDesc">Creador de JODERDroid</string>
+    <string name="alexpowerupDesc">Creador de JODERGenerator</string>
+    <string name="infoMessage">Este proyecto es una versión para Android de JODERGenerator, una aplicación de AlexPowerUp para Windows</string>
+    <string name="info">Ver información</string>
 </resources>
