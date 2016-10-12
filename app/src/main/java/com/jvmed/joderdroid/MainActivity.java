@@ -34,7 +34,11 @@ public class MainActivity extends AppCompatActivity {
         initialize();
     }
 
-    public void getButtonClick (View view) {
+    private void sendSnack(String message) {
+        Snackbar.make(parentLayout, message, Snackbar.LENGTH_LONG).show();
+    }
+
+    public void getButtonClick(View view) {
         btnGenerate.setEnabled(false);
 
         switch (view.getId()) {
@@ -50,22 +54,13 @@ public class MainActivity extends AppCompatActivity {
                 maximumValue = Integer.parseInt(edtMax.getText().toString());
 
                 if (minimumValue < MINIMUM_POSIBLE_VALUE) {
-                    Snackbar snackbar = Snackbar.make(parentLayout, R.string.minJODERChar, Snackbar.LENGTH_INDEFINITE);
-                    snackbar.setActionTextColor(Color.RED);
-                    snackbar.setDuration(2500);
-                    snackbar.show();
+                    sendSnack(getString(R.string.minJODERChar));
                 }
                 else if (maximumValue > MAXIMUM_POSIBLE_VALUE) {
-                    Snackbar snackbar = Snackbar.make(parentLayout, R.string.maxJODERChar, Snackbar.LENGTH_INDEFINITE);
-                    snackbar.setActionTextColor(Color.RED);
-                    snackbar.setDuration(2500);
-                    snackbar.show();
+                    sendSnack(getString(R.string.maxJODERChar));
                 }
                 else if (minimumValue > maximumValue) {
-                    Snackbar snackbar = Snackbar.make(parentLayout, R.string.minHigherMax, Snackbar.LENGTH_INDEFINITE);
-                    snackbar.setActionTextColor(Color.RED);
-                    snackbar.setDuration(2500);
-                    snackbar.show();
+                    sendSnack(getString(R.string.minHigherMax));
                 }
                 else {
                     edtJODER.setText(JODER.Generate(minimumValue, maximumValue));
@@ -74,20 +69,13 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.btnClipboard:
                 if (TextUtils.equals(edtJODER.getText().toString(), "")) {
-                    Snackbar snackbar = Snackbar.make(parentLayout, R.string.JODEREmpty, Snackbar.LENGTH_INDEFINITE);
-                    snackbar.setActionTextColor(Color.RED);
-                    snackbar.setDuration(2500);
-                    snackbar.show();
+                    sendSnack(getString(R.string.JODEREmpty));
                 }
                 else {
                     ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
                     ClipData clip = ClipData.newPlainText("jdr", edtJODER.getText().toString());
                     clipboard.setPrimaryClip(clip);
-
-                    Snackbar snackbar = Snackbar.make(parentLayout, R.string.JODERCopied, Snackbar.LENGTH_INDEFINITE);
-                    snackbar.setActionTextColor(Color.RED);
-                    snackbar.setDuration(2500);
-                    snackbar.show();
+                    sendSnack(getString(R.string.JODERCopied));
                 }
                 break;
         }
