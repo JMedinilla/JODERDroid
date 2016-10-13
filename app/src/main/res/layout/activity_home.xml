@@ -122,16 +122,34 @@
 
         </android.support.design.widget.TextInputLayout>
 
-        <ImageButton
-            android:background="@color/background"
-            android:onClick="getButtonClick"
+        <LinearLayout
             android:layout_marginLeft="@dimen/main_margin"
             android:layout_marginStart="@dimen/main_margin"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@android:drawable/ic_menu_save"
-            android:id="@+id/btnClipboard"
-            android:contentDescription="@string/imagecontentdescription" />
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:background="@color/background"
+                android:onClick="getButtonClick"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@android:drawable/ic_menu_share"
+                android:id="@+id/btnShare"
+                android:contentDescription="@string/imagecontentdescription" />
+
+            <ImageButton
+                android:layout_marginTop="@dimen/button_margin"
+                android:background="@color/background"
+                android:onClick="getButtonClick"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@android:drawable/ic_menu_save"
+                android:id="@+id/btnClipboard"
+                android:contentDescription="@string/imagecontentdescription" />
+
+        </LinearLayout>
 
     </LinearLayout>
 </RelativeLayout>

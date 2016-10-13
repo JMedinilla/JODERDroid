@@ -9,7 +9,6 @@
     <string name="maxCha">Caracteres máximos</string>
     <string name="hint">JODER©</string>
     <string name="btnGenerate">Generar JODER©</string>
-    <string name="JODEREmpty">No hay ningún JODER© a copiar</string>
     <string name="JODERDefault">JODER</string>
     <string name="JODERCopied">Se ha copiado el JODER© al portapapeles</string>
     <string name="minHigherMax">Los caracteres mínimos son más altos que los máximos</string>
@@ -25,4 +24,6 @@
     <string name="alexpowerupDesc">Creador de JODERGenerator</string>
     <string name="infoMessage">Este proyecto es una versión para Android de JODERGenerator, una aplicación de AlexPowerUp para Windows</string>
     <string name="info">Ver información</string>
+    <string name="JODERCopyEmpty">No hay ningún JODER© a copiar</string>
+    <string name="JODERShareEmpty">No hay ningún JODER© que compartir</string>
 </resources>

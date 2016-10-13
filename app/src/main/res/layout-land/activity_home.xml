@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="com.jvmed.joderdroid.Home_Activity"
+    android:id="@+id/parentLayout"
+    android:paddingLeft="@dimen/main_margin"
+    android:paddingRight="@dimen/main_margin"
+    android:paddingTop="@dimen/main_margin"
+    android:layout_marginLeft="@dimen/info_margin"
+    android:layout_marginStart="@dimen/info_margin">
+
+    <LinearLayout
+        android:layout_marginLeft="@dimen/edt_side_margin"
+        android:layout_marginRight="@dimen/edt_side_margin"
+        android:background="@color/background"
+        android:layout_marginBottom="@dimen/main_margin"
+        android:gravity="center"
+        android:id="@+id/MinLayout"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textColor="@color/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/minCha"
+            android:id="@+id/txtMin" />
+
+        <EditText
+            android:textColor="@color/text"
+            android:layout_marginStart="@dimen/edt_side_margin"
+            android:layout_marginLeft="@dimen/edt_side_margin"
+            android:textAlignment="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="5"
+            android:id="@+id/edtMin" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="@dimen/edt_side_margin"
+        android:layout_marginRight="@dimen/edt_side_margin"
+        android:background="@color/background"
+        android:gravity="center"
+        android:layout_below="@id/MinLayout"
+        android:id="@+id/MaxLayout"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textColor="@color/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/maxCha"
+            android:id="@+id/txtMax" />
+
+        <EditText
+            android:textColor="@color/text"
+            android:layout_marginStart="@dimen/edt_side_margin"
+            android:layout_marginLeft="@dimen/edt_side_margin"
+            android:textAlignment="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="5"
+            android:id="@+id/edtMax" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_toRightOf="@id/MaxLayout"
+        android:layout_toEndOf="@id/MaxLayout"
+        android:onClick="getButtonClick"
+        android:layout_marginTop="@dimen/main_margin"
+        android:layout_marginBottom="@dimen/main_margin"
+        android:layout_centerHorizontal="true"
+        android:layout_width="74dp"
+        android:layout_height="74dp"
+        android:background="@drawable/icon"
+        android:id="@+id/btnGenerate" />
+
+    <LinearLayout
+        android:layout_alignTop="@id/MinLayout"
+        android:layout_alignBottom="@id/MaxLayout"
+        android:id="@+id/btnLayout"
+        android:layout_toRightOf="@id/btnGenerate"
+        android:layout_toEndOf="@id/btnGenerate"
+        android:layout_marginLeft="@dimen/main_margin"
+        android:layout_marginStart="@dimen/main_margin"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:background="@color/background"
+            android:onClick="getButtonClick"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@android:drawable/ic_menu_share"
+            android:id="@+id/btnShare"
+            android:contentDescription="@string/imagecontentdescription" />
+
+        <ImageButton
+            android:layout_marginTop="@dimen/info_margin"
+            android:background="@color/background"
+            android:onClick="getButtonClick"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@android:drawable/ic_menu_save"
+            android:id="@+id/btnClipboard"
+            android:contentDescription="@string/imagecontentdescription" />
+
+    </LinearLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_below="@id/btnGenerate"
+        android:layout_alignLeft="@id/MaxLayout"
+        android:layout_alignStart="@id/MaxLayout"
+        android:layout_alignRight="@id/btnLayout"
+        android:layout_alignEnd="@id/btnLayout"
+        android:background="@color/background"
+        android:cursorVisible="false"
+        android:focusableInTouchMode="false"
+        android:focusable="false"
+        android:clickable="false"
+        android:id="@+id/edtJODERLayout"
+        app:counterEnabled="true"
+        android:layout_marginTop="@dimen/info_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="148dp">
+
+        <EditText
+            android:textColor="@color/text"
+            android:cursorVisible="false"
+            android:focusableInTouchMode="false"
+            android:focusable="false"
+            android:clickable="false"
+            android:hint="@string/hint"
+            android:textAlignment="center"
+            android:maxLines="4"
+            android:lines="4"
+            android:inputType="none"
+            android:id="@+id/edtJODER"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </android.support.design.widget.TextInputLayout>
+</RelativeLayout>

@@ -5,7 +5,8 @@
     <string name="btnGenerate">Generate JODER©</string>
     <string name="hint">JODER©</string>
     <string name="JODERCopied">The JODER© has been copied to the clipboard</string>
-    <string name="JODEREmpty">There\'s no JODER© to copy</string>
+    <string name="JODERCopyEmpty">There\'s no JODER© to copy</string>
+    <string name="JODERShareEmpty">There\'s no JODER© to share</string>
     <string name="minJODERChar">A JODER© must be at least 5 characters long</string>
     <string name="maxJODERChar">A JODER© can have up to 9999 characters</string>
     <string name="minHigherMax">The minimum characters are higher than the maximum characters</string>

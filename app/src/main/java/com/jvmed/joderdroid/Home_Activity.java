@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +19,7 @@ public class Home_Activity extends AppCompatActivity {
 
     private static final int MINIMUM_POSIBLE_VALUE = 5;
     private static final int MAXIMUM_POSIBLE_VALUE = 9999;
+    private static final int TWEET_VALUE = 140;
 
     private EditText edtJODER;
     private EditText edtMin;
@@ -87,13 +87,26 @@ public class Home_Activity extends AppCompatActivity {
 
             case R.id.btnClipboard:
                 if (TextUtils.equals(edtJODER.getText().toString(), "")) {
-                    sendSnack(getString(R.string.JODEREmpty));
+                    sendSnack(getString(R.string.JODERCopyEmpty));
                 }
                 else {
                     ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
                     ClipData clip = ClipData.newPlainText("jdr", edtJODER.getText().toString());
                     clipboard.setPrimaryClip(clip);
                     sendSnack(getString(R.string.JODERCopied));
+                }
+                break;
+
+            case R.id.btnShare:
+                if (TextUtils.equals(edtJODER.getText().toString(), "")) {
+                    sendSnack(getString(R.string.JODERShareEmpty));
+                }
+                else {
+                    Intent share = new Intent();
+                    share.setAction(Intent.ACTION_SEND);
+                    share.putExtra(Intent.EXTRA_TEXT, edtJODER.getText().toString());
+                    share.setType("text/plain");
+                    startActivity(share);
                 }
                 break;
         }
@@ -109,9 +122,8 @@ public class Home_Activity extends AppCompatActivity {
         edtMin = (EditText)findViewById(R.id.edtMin);
         edtMax = (EditText)findViewById(R.id.edtMax);
         btnGenerate = (Button)findViewById(R.id.btnGenerate);
-        edtMin.setText(getString(R.string.minimumValue));
-        edtMax.setText(getString(R.string.maximumValue));
-        edtJODER.setText(getString(R.string.JODERDefault));
+        edtMin.setText(String.valueOf(TWEET_VALUE));
+        edtMax.setText(String.valueOf(TWEET_VALUE));
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
