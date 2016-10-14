@@ -7,13 +7,16 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 public class Home_Activity extends AppCompatActivity {
 
@@ -54,6 +57,10 @@ public class Home_Activity extends AppCompatActivity {
 
     private void sendSnack(String message) {
         Snackbar.make(parentLayout, message, Snackbar.LENGTH_LONG).show();
+    }
+
+    private void sendToast(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
     public void getButtonClick(View view) {
@@ -129,5 +136,45 @@ public class Home_Activity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setSubtitle(getResources().getString(R.string.actionSubtitle));
         }
+
+        edtMax.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                //
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.length() > 4) {
+                    edtMax.setText(String.valueOf(MAXIMUM_POSIBLE_VALUE));
+                    sendToast(getString(R.string.maxJODERChar));
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                //
+            }
+        });
+
+        edtMin.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                //
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.length() > 4) {
+                    edtMin.setText(String.valueOf(MAXIMUM_POSIBLE_VALUE));
+                    sendToast(getString(R.string.maxJODERChar));
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                //
+            }
+        });
     }
 }
