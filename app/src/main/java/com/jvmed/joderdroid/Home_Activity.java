@@ -20,17 +20,21 @@ import android.widget.Toast;
 
 public class Home_Activity extends AppCompatActivity {
 
+    //Final variables
     private static final int MINIMUM_POSIBLE_VALUE = 5;
     private static final int MAXIMUM_POSIBLE_VALUE = 9999;
     private static final int TWEET_VALUE = 140;
 
+    //Components
     private EditText edtJODER;
     private EditText edtMin;
     private EditText edtMax;
     private Button btnGenerate;
     private RelativeLayout parentLayout;
-    private int minimumValue;
-    private int maximumValue;
+
+    //Variables
+    private int minimumValue; //Minimum value for the JODER
+    private int maximumValue; //Maximum value for the JODER
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +59,18 @@ public class Home_Activity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Method that sends a SnackBar with a message
+     * @param message Message to show
+     */
     private void sendSnack(String message) {
         Snackbar.make(parentLayout, message, Snackbar.LENGTH_LONG).show();
     }
 
+    /**
+     * Method that sends a Toast with a message
+     * @param message Message to show
+     */
     private void sendToast(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
@@ -68,6 +80,9 @@ public class Home_Activity extends AppCompatActivity {
 
         switch (view.getId()) {
             case R.id.btnGenerate:
+                /*
+                If one of the EditTexts are empty, the minimum length for the JODER are 5 characters
+                 */
                 if (edtMin.getText().toString().length() == 0) {
                     edtMin.setText(getString(R.string.minimumValue));
                 }
@@ -75,9 +90,19 @@ public class Home_Activity extends AppCompatActivity {
                     edtMax.setText(edtMin.getText().toString());
                 }
 
+                /*
+                If they're not empty, you just take that value and convert it to int
+                 */
                 minimumValue = Integer.parseInt(edtMin.getText().toString());
                 maximumValue = Integer.parseInt(edtMax.getText().toString());
 
+                /*
+                Rules to make a JODER
+
+                1. 5 or more characters
+                2. 9999 or less characters
+                3. You cant enter a minimum value higher than the maximum value (obvious)
+                 */
                 if (minimumValue < MINIMUM_POSIBLE_VALUE) {
                     sendSnack(getString(R.string.minJODERChar));
                 }
@@ -92,6 +117,9 @@ public class Home_Activity extends AppCompatActivity {
                 }
                 break;
 
+            /*
+            If the JODER EditText is not empty, it copies it to the clipboard
+             */
             case R.id.btnClipboard:
                 if (TextUtils.equals(edtJODER.getText().toString(), "")) {
                     sendSnack(getString(R.string.JODERCopyEmpty));
@@ -104,6 +132,9 @@ public class Home_Activity extends AppCompatActivity {
                 }
                 break;
 
+            /*
+            If the JODER EditText is not empty, it sahres it with another App
+             */
             case R.id.btnShare:
                 if (TextUtils.equals(edtJODER.getText().toString(), "")) {
                     sendSnack(getString(R.string.JODERShareEmpty));
@@ -145,6 +176,7 @@ public class Home_Activity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //You have to make sure the user dont enter a number higher than 9999
                 if (s.length() > 4) {
                     edtMax.setText(String.valueOf(MAXIMUM_POSIBLE_VALUE));
                     sendToast(getString(R.string.maxJODERChar));
@@ -165,6 +197,7 @@ public class Home_Activity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //You have to make sure the user dont enter a number higher than 9999
                 if (s.length() > 4) {
                     edtMin.setText(String.valueOf(MAXIMUM_POSIBLE_VALUE));
                     sendToast(getString(R.string.maxJODERChar));
